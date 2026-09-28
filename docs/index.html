@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Website Upgrade Detector — SkyDevLab</title>
+<meta name="description" content="Detect web libraries, compare detected versions with the latest published npm versions, and identify available upgrades.">
+<style>
+:root{--bg:#08101f;--panel:#0f1b31;--panel2:#111f38;--line:#263a5b;--text:#f4f7fb;--muted:#9db0cc;--blue:#4ab7ff;--cyan:#6ee7ff;--green:#45d39b;--yellow:#f7c64a;--orange:#ff9c52;--red:#ff6f7c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at top right,#13295a 0,#08101f 42%,#050b15 100%);color:var(--text);line-height:1.6}.wrap{max-width:1180px;margin:auto;padding:0 22px}.nav{position:sticky;top:0;z-index:10;background:rgba(5,11,21,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}.navin{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.brand img{width:38px;height:38px;border-radius:10px;object-fit:cover}.brand span{color:#fff}.brand b{color:var(--cyan)}.nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:14px}.hero{padding:88px 0 58px}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid #2d78b4;border-radius:999px;color:var(--cyan);background:rgba(74,183,255,.09);font-size:12px;font-weight:700;letter-spacing:.4px}.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.04;margin:18px 0}.hero h1 span{color:var(--cyan)}.hero p{font-size:18px;color:var(--muted);max-width:720px}.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.btn{padding:12px 17px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid var(--line);display:inline-flex;align-items:center}.btn.primary{background:#1488db;color:#fff;border-color:#1488db}.btn.secondary{color:#dce9fa;background:rgba(255,255,255,.02)}.hero-card{background:linear-gradient(160deg,#11254a,#0b1528);border:1px solid #2b4167;border-radius:22px;padding:18px;box-shadow:0 30px 90px rgba(0,0,0,.3)}.browser{border:1px solid #31496f;border-radius:15px;overflow:hidden;background:#09111f}.bar{height:40px;background:#0e1a2e;display:flex;align-items:center;gap:7px;padding:0 12px}.dot{width:9px;height:9px;border-radius:50%;background:#50627d}.screen{padding:20px}.url{height:35px;border:1px solid #2b4160;border-radius:8px;color:#7991b3;display:flex;align-items:center;padding:0 11px;font-size:12px}.mock-card{margin-top:14px;background:#101d31;border:1px solid #263b5d;border-radius:12px;padding:14px}.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid #1c2b43}.row:last-child{border-bottom:0}.lib{font-weight:700}.ver{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:#b5c4da}.badge{font-size:11px;font-weight:800;padding:4px 8px;border-radius:7px}.up{color:#ffc98f;background:rgba(255,156,82,.12)}.ok{color:#8de6c2;background:rgba(69,211,155,.1)}.unknown{color:#b8c7dc;background:rgba(157,176,204,.1)}.section{padding:72px 0}.section h2{font-size:34px;margin:0 0 10px}.section>.lead{color:var(--muted);max-width:760px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.feature{background:rgba(15,27,49,.8);border:1px solid var(--line);border-radius:16px;padding:22px}.feature h3{margin:0 0 8px}.feature p{margin:0;color:var(--muted);font-size:14px}.demo{background:linear-gradient(180deg,#0e1930,#091221);border:1px solid var(--line);border-radius:18px;overflow:hidden}.demo-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.select{background:#0b1628;color:#dce9fa;border:1px solid #2d4468;border-radius:9px;padding:9px 10px;min-width:260px}.demo-body{padding:18px}.notice{display:none;margin-bottom:12px;padding:10px 12px;border:1px solid #3f587d;border-radius:9px;color:#bcd0ea;background:#0d1930;font-size:13px}.demo-table{width:100%;border-collapse:collapse}.demo-table th,.demo-table td{padding:12px 10px;border-bottom:1px solid #1a2a43;text-align:left;font-size:13px}.demo-table th{color:#7f95b3;font-weight:600}.demo-table td{color:#dae5f4}.footer{border-top:1px solid rgba(255,255,255,.07);padding:30px 0 55px;color:#7f95b3;font-size:13px}.footer a{color:#8fcfff}.legal{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}.legal .feature{min-height:100%}
+@media(max-width:900px){.hero-grid,.legal{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}.hero{padding-top:55px}.nav a{margin-left:12px}}
+</style>
+</head>
+<body>
+<header class="nav">
+ <div class="wrap navin">
+  <div class="brand">
+   <img src="https://raw.githubusercontent.com/SkyDevLab/website-upgrade-detector/main/store-assets/icon512.png" alt="Website Upgrade Detector">
+   <span>Website Upgrade <b>Detector</b></span>
+  </div>
+  <nav>
+   <a href="#features">Features</a>
+   <a href="#demo">Demo</a>
+   <a href="#privacy">Privacy</a>
+   <a href="https://github.com/SkyDevLab/website-upgrade-detector">GitHub</a>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="eyebrow">DEVELOPER TOOL · BY SKYDEVLAB</div>
+   <h1>Know what your website needs to <span>upgrade.</span></h1>
+   <p>Website Upgrade Detector scans the active webpage for supported JavaScript and CSS libraries, identifies the versions exposed by the page, and checks npm for the latest published versions.</p>
+   <div class="cta">
+    <a class="btn primary" href="https://github.com/SkyDevLab/website-upgrade-detector">View on GitHub</a>
+    <a class="btn secondary" href="#demo">Try the demo</a>
+   </div>
+  </div>
+  <div class="hero-card">
+   <div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="screen">
+     <div class="url">https://example.com</div>
+     <div class="mock-card">
+      <div class="row"><div><div class="lib">jQuery</div><div class="ver">3.6.4 → 3.7.1</div></div><div class="badge up">UPDATE</div></div>
+      <div class="row"><div><div class="lib">React</div><div class="ver">18.2.0 → 19.1.1</div></div><div class="badge up">MAJOR</div></div>
+      <div class="row"><div><div class="lib">Three.js</div><div class="ver">0.180.0 → 0.180.0</div></div><div class="badge ok">CURRENT</div></div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="features" class="section">
+ <div class="wrap">
+  <h2>Built for frontend developers</h2>
+  <p class="lead">The MVP stays focused: detect what is exposed by the page, compare it with current npm releases, and explain the result without pretending that an upgrade is mandatory.</p>
+  <div class="grid3">
+   <article class="feature"><h3>Deterministic detection</h3><p>Uses runtime globals, script URLs, stylesheet links, and framework metadata to reduce false positives.</p></article>
+   <article class="feature"><h3>Live npm versions</h3><p>Checks the public npm registry for the latest published package version instead of relying on a manually maintained list.</p></article>
+   <article class="feature"><h3>SemVer-aware</h3><p>Compares numeric major, minor, patch, and pre-release versions correctly.</p></article>
+   <article class="feature"><h3>Major vs minor</h3><p>Distinguishes major-version changes from regular updates so the impact is clearer.</p></article>
+   <article class="feature"><h3>Local-first</h3><p>Website details stay in the browser. npm receives only the package name needed for version lookup.</p></article>
+   <article class="feature"><h3>Graceful failures</h3><p>If a version is unknown or npm is unreachable, the detector reports that state instead of guessing.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="demo" class="section">
+ <div class="wrap">
+  <h2>Interactive demo</h2>
+  <p class="lead">This static demo illustrates the extension's result states. The real Edge extension performs detection on the current webpage.</p>
+  <div class="demo" style="margin-top:25px">
+   <div class="demo-head">
+    <strong>Sample scan</strong>
+    <div>
+      <select id="scenario" class="select">
+       <option value="mixed">Mixed updates</option>
+       <option value="current">All current</option>
+       <option value="unknown">Unknown version</option>
+       <option value="empty">No supported libraries</option>
+      </select>
+      <button id="run" class="btn primary" style="cursor:pointer;margin-left:8px">Run scan</button>
+    </div>
+   </div>
+   <div class="demo-body">
+    <div id="notice" class="notice"></div>
+    <table class="demo-table">
+      <thead><tr><th>Library</th><th>Detected</th><th>Latest published</th><th>Status</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="privacy" class="section">
+ <div class="wrap">
+  <h2>Privacy & support</h2>
+  <p class="lead">Website Upgrade Detector is designed as a client-side developer utility. It does not require an account or backend service.</p>
+  <div class="legal">
+   <article class="feature"><h3>Privacy</h3><p>The extension does not transmit webpage URLs, DOM content, browsing history, cookies, credentials, or telemetry. For npm version checks, only the public package name is requested from the npm registry.</p><p style="margin-top:12px"><a href="PRIVACY.html">Read the privacy policy</a></p></article>
+   <article class="feature"><h3>Support</h3><p>Found a bug or a library that should be supported? Open an issue on GitHub with the extension version, Edge version, and steps to reproduce.</p><p style="margin-top:12px"><a href="https://github.com/SkyDevLab/website-upgrade-detector/issues">Open a support issue</a></p></article>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="footer">
+ <div class="wrap">
+  <strong>Website Upgrade Detector by SkyDevLab</strong><br>
+  Microsoft Edge & Chromium Manifest V3 developer extension · MIT License
+  <div style="margin-top:10px">© 2026 SkyDevLab · <a href="https://github.com/SkyDevLab/website-upgrade-detector">GitHub</a></div>
+ </div>
+</footer>
+
+<script>
+const data={
+ mixed:[
+  ["jQuery","3.6.4","3.7.1","UPDATE_AVAILABLE","UPDATE"],
+  ["React","18.2.0","19.1.1","MAJOR","MAJOR"],
+  ["Axios","1.7.2","1.12.2","UPDATE_AVAILABLE","UPDATE"],
+  ["Three.js","0.180.0","0.180.0","CURRENT","CURRENT"]
+ ],
+ current:[
+  ["React","19.1.1","19.1.1","CURRENT","CURRENT"],
+  ["Axios","1.12.2","1.12.2","CURRENT","CURRENT"],
+  ["Three.js","0.180.0","0.180.0","CURRENT","CURRENT"]
+ ],
+ unknown:[
+  ["jQuery","Unknown","3.7.1","UNKNOWN","UNKNOWN"],
+  ["Bootstrap","Unknown","5.3.8","UNKNOWN","UNKNOWN"]
+ ],
+ empty:[]
+};
+const rows=document.getElementById("rows"), notice=document.getElementById("notice"), scenario=document.getElementById("scenario");
+function render(){
+ const v=scenario.value, items=data[v];
+ rows.innerHTML="";
+ notice.style.display="none";
+ if(!items.length){
+  notice.textContent="No supported libraries detected in this sample.";
+  notice.style.display="block";
+  return;
+ }
+ items.forEach(([name,det,latest,status,label])=>{
+   const tr=document.createElement("tr");
+   let cls=status==="CURRENT"?"ok":status==="UNKNOWN"?"unknown":"up";
+   tr.innerHTML="<td><strong>"+name+"</strong></td><td class='ver'>"+det+"</td><td class='ver'>"+latest+"</td><td><span class='badge "+cls+"'>"+label+"</span></td>";
+   rows.appendChild(tr);
+ });
+}
+document.getElementById("run").addEventListener("click",render); render();
+</script>
+</body>
+</html>
