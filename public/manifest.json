@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Website Upgrade Detector",
+  "version": "1.0.0",
+  "description": "Detects JavaScript and CSS libraries used by websites, extracts their versions, and checks for newer published releases on npm.",
+  "author": "SkyDevLab",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://registry.npmjs.org/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Website Upgrade Detector",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "serviceWorker.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
