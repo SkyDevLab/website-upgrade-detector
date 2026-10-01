@@ -201,3 +201,10 @@ Website Upgrade Detector does not collect, track, or share any personal informat
 ## License
 
 This project is licensed under the [MIT License](LICENSE) &copy; 2026 SkyDevLab.
+
+
+## 👤 Author & Project Identity
+
+**Website Upgrade Detector** is created and maintained by **Surya Pratap Singh (SkyDevLab)**.
+
+GitHub: https://github.com/SkyDevLab
