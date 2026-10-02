@@ -20,6 +20,13 @@
 
 ---
 
+## Discoverability
+
+- **Maintainer:** [SkyDevLab](https://github.com/SkyDevLab)
+- **Repository:** [SkyDevLab/website-upgrade-detector](https://github.com/SkyDevLab/website-upgrade-detector)
+- **Category:** browser extension, web technology detection, frontend developer tools
+- **Platform:** Microsoft Edge and Chromium-based browsers
+
 ## Overview
 
 **Website Upgrade Detector** is a developer utility that detects JavaScript and CSS libraries used by the active website, determines their current versions, queries the official npm registry for latest published versions, and clearly displays which libraries have newer releases available.
