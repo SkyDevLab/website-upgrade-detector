@@ -18,6 +18,11 @@
   <img src="https://img.shields.io/badge/License-MIT-amber?style=flat-square" alt="License: MIT" />
 </p>
 
+<p align="center">
+  <a href="https://microsoftedge.microsoft.com/addons/detail/website-upgrade-detector/neiicihhckdhamhhmkinhgiiljknjnfo"><strong>🧩 Install on Microsoft Edge</strong></a> ·
+  <a href="https://skydevlab.github.io/website-upgrade-detector/"><strong>🌐 GitHub Pages Website</strong></a>
+</p>
+
 ---
 
 ## Discoverability
